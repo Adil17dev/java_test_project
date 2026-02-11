@@ -29,10 +29,13 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Sonar cloud scan
-      uses: SonarSource/sonarcloud-github-action@v2
+      uses: SonarSource/sonarqube-scan-action@v7
       env:
         SONAR_TOKEN: ${{ secrets.sonar_token }}
-      run: mvn _B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectkey=Adil17dev
+      with:
+        args: >
+          -Dsonar.organization=adil17dev
+          -Dsonar.projectKey=Adil17dev_java_test_project
 
     - name: create package
       run: mkdir staging && cp target/*.jar staging
