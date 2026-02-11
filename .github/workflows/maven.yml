@@ -36,6 +36,7 @@ jobs:
         args: >
           -Dsonar.organization=adil17dev
           -Dsonar.projectKey=Adil17dev_java_test_project
+          -Dsonar.java.binaries=target/classes
 
     - name: create package
       run: mkdir staging && cp target/*.jar staging
