@@ -32,8 +32,7 @@ jobs:
       uses: SonarSource/sonarcloud-github-action@v2
       env:
         SONAR_TOKEN: ${{ secrets.sonar_token }}
-        SONAR_PROJECT_KEY: Adil17dev_java_test_project
-        SONAR_ORG: Adil17dev
+      run: mvn _B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectkey=Adil17dev
 
     - name: create package
       run: mkdir staging && cp target/*.jar staging
