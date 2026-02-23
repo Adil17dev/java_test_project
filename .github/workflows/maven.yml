@@ -39,6 +39,15 @@ jobs:
           -Dsonar.java.binaries=target/classes
           -Dsonar.exclusions=.github/**
 
+    - name: SonarQube Quality Gate check
+      id: sonarqube-quality-gate-check
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      with:
+        pollingTimeoutSec: 300
+      env:
+        SONAR_TOKEN: ${{ secrets.sonar_token }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
+
     - name: create package
       run: mkdir staging && cp target/*.jar staging
 
